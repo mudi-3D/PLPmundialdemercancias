@@ -193,7 +193,7 @@ console.log('Buscando cards')
 
 createStylesPLP();
 
-setTimeout(()=>{ searchCards(); },1500)
+setTimeout(()=>{ searchCards(); console.log('probando plp') },1500)
 
 
 
