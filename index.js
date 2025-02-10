@@ -185,3 +185,4 @@ const searchCards = () => {
 };
 
 searchCards();
+console.log('probando PLP latest')
