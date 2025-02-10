@@ -153,15 +153,11 @@ const createStylesPLP = () => {
 
 const searchCards = () => {
 
-console.log('Buscando cards')
 
     if (counterSearch === 1000) return;
 
     const allCards = document.querySelectorAll('.product-element-top')
     
-
-
-    console.log(allCards)
 
     if (allCards.length == 0) {
         counterSearch++;
@@ -172,6 +168,8 @@ console.log('Buscando cards')
 
     for ( let i = 0; i < allCards.length; i++) {
 
+const idCard = document.querySelector(`#id`)
+        
         let numberSKu = allCards[i].querySelector('.wd-add-btn a').getAttribute("data-product_sku");
     
 
