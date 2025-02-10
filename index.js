@@ -1,4 +1,5 @@
 const SKUS = ["MAQ100106-002", "SEG020106-001", "MAQ0054", "MAQ0057", "MAQ0060", "MAQ0021"];
+
 /** Contador para detener la busqueda y revisión de las "cards" */
 let counterSearch = 0;
 
@@ -103,12 +104,12 @@ function createModal(sku) {
             !flagAR
                 ? (
                     document.body.querySelector('.containerQRMudi').style.right = "-11%",
-                    changeStyleBtnAR(flagAR, rgba(0,113,206,.95)),
+                    changeStyleBtnAR(flagAR, rgba(0, 113, 206, .95)),
                     flagAR = !flagAR
                 )
                 : (
                     document.body.querySelector('.containerQRMudi').style.right = "-150%",
-                    changeStyleBtnAR(flagAR, rgba(0,113,206,.95)),
+                    changeStyleBtnAR(flagAR, rgba(0, 113, 206, .95)),
                     flagAR = !flagAR
                 )
         }
@@ -139,9 +140,6 @@ function createModal(sku) {
     document.body.appendChild(modalMudi)
 };
 
-
-
-
 const createStylesPLP = () => {
     if (document.head.querySelector('#PLPStyle')) return;
     const link = document.createElement('LINK')
@@ -157,29 +155,26 @@ const searchCards = () => {
     if (counterSearch === 1000) return;
 
     const allCards = document.querySelectorAll('.product-element-top')
-    
+
 
     if (allCards.length == 0) {
         counterSearch++;
         requestAnimationFrame(searchCards);
         return
-    
+
     };
 
-    for ( let i = 0; i < allCards.length; i++) {
+    createStylesPLP();
 
-const idCard = document.querySelector(`#id`)
-        
-        let numberSKu = allCards[i].querySelector('.wd-add-btn a').getAttribute("data-product_sku");
-    
+    for (let i = 0; i < allCards.length; i++) {
 
+        let numberSKu = document.querySelector(`#id`);
 
         if (SKUS.includes(numberSKu)) {
-            console.log('enciontramos una card ')
             /** Contenido de la imagen icono identificador 3D  */
             let ImageElement = document.createElement('DIV');
             ImageElement.classList.add('icon3DPLP');
-            ImageElement.addEventListener('click', ()=> {createModal(numberSKu)})
+            ImageElement.addEventListener('click', () => { createModal(numberSKu) })
             const father = allCards[i];
             father.appendChild(ImageElement);
         }
@@ -189,12 +184,4 @@ const idCard = document.querySelector(`#id`)
 
 };
 
-createStylesPLP();
-
-setTimeout(()=>{ searchCards(); console.log('probando plp') },1500)
-
-
-
-
-
-
+searchCards();
